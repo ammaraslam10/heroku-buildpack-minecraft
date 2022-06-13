@@ -32,5 +32,4 @@ if [ -n "$FTP_HOST" ]; then
     { echo "$FTP_USERNAME"; echo "$FTP_PASSWORD"; } | pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/ --force --delete --resolve=local
     cd ..
   fi
-  rm .s3cfg
 fi
