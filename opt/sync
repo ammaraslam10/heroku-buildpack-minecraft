@@ -20,3 +20,17 @@ EOF
   fi
   rm .s3cfg
 fi
+
+if [ -n "$FTP_HOST" ]; then
+  # note: this won't work if level-name is set in server.properties
+  # todo: dynamically determine world/ dir
+  if [ -d world ]; then
+    { echo "$FTP_USERNAME"; echo "$FTP_PASSWORD"; } | pyftpsync sync world/ ftp://${FTP_HOST}/cloud/minecraft/
+  else
+    mkdir -p world
+    cd world
+    { echo "$FTP_USERNAME"; echo "$FTP_PASSWORD"; } | pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/ --force --delete --resolve=local
+    cd ..
+  fi
+  rm .s3cfg
+fi
