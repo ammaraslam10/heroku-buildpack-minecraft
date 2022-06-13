@@ -29,11 +29,11 @@ if [ -n "$FTP_HOST" ]; then
   else
     mkdir -p world
     cd world
-    { echo "$FTP_USERNAME"; echo "$FTP_PASSWORD"; } | pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/world --force --delete --resolve=local
+    { echo "$FTP_USERNAME"; echo "$FTP_PASSWORD"; } | pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/world --force --delete --resolve=remote
     cd ..
     mkdir -p plugins
     cd plugins
-    { echo "$FTP_USERNAME"; echo "$FTP_PASSWORD"; } | pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/plugins --force --delete --resolve=local
+    { echo "$FTP_USERNAME"; echo "$FTP_PASSWORD"; } | pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/plugins --force --delete --resolve=remote
     cd ..
   fi
 fi
