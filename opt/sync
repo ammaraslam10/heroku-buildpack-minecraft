@@ -27,6 +27,7 @@ if [ -n "$FTP_HOST" ]; then
   echo "$FTP_USERNAME:$FTP_PASSWORD" | keyring set pyftpsync ${FTP_HOST}
   if [ -d world ]; then
     pyftpsync sync world/ ftp://${FTP_HOST}/cloud/minecraft/world
+    pyftpsync sync plugins/ ftp://${FTP_HOST}/cloud/minecraft/plugins
   else
     mkdir -p world
     cd world
