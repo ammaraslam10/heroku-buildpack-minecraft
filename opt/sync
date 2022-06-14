@@ -27,6 +27,8 @@ if [ -n "$FTP_HOST" ]; then
   echo "$FTP_USERNAME:$FTP_PASSWORD" | keyring set pyftpsync ${FTP_HOST}
   if [ -d world ]; then
     pyftpsync sync world/ ftp://${FTP_HOST}/cloud/minecraft/world
+    pyftpsync sync world_nether/ ftp://${FTP_HOST}/cloud/minecraft/world_nether/
+    pyftpsync sync world_the_end/ ftp://${FTP_HOST}/cloud/minecraft/world_the_end/
     pyftpsync sync plugins/ ftp://${FTP_HOST}/cloud/minecraft/plugins
   else
     mkdir -p world
@@ -36,6 +38,14 @@ if [ -n "$FTP_HOST" ]; then
     mkdir -p plugins
     cd plugins
     pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/plugins --force --delete --resolve=remote
+    cd ..
+    mkdir -p world_nether
+    cd world_nether
+    pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/world_nether --force --delete --resolve=remote
+    cd ..
+    mkdir -p world_the_end
+    cd world_the_end
+    pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/world_the_end --force --delete --resolve=remote
     cd ..
   fi
 fi
