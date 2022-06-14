@@ -25,15 +25,15 @@ if [ -n "$FTP_HOST" ]; then
   # note: this won't work if level-name is set in server.properties
   # todo: dynamically determine world/ dir
   if [ -d world ]; then
-    printf "%s\n" "$FTP_USERNAME" "$FTP_PASSWORD" | pyftpsync sync world/ ftp://${FTP_HOST}/cloud/minecraft/world
+    printf "%s\n" "$FTP_USERNAME" "$FTP_PASSWORD" | pyftpsync sync world/ ftp://${FTP_HOST}/cloud/minecraft/world --prompt
   else
     mkdir -p world
     cd world
-    printf "%s\n" "$FTP_USERNAME" "$FTP_PASSWORD" | pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/world --force --delete --resolve=remote
+    printf "%s\n" "$FTP_USERNAME" "$FTP_PASSWORD" | pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/world --force --delete --resolve=remote --prompt
     cd ..
     mkdir -p plugins
     cd plugins
-    printf "%s\n" "$FTP_USERNAME" "$FTP_PASSWORD" | pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/plugins --force --delete --resolve=remote
+    printf "%s\n" "$FTP_USERNAME" "$FTP_PASSWORD" | pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/plugins --force --delete --resolve=remote --prompt
     cd ..
   fi
 fi
