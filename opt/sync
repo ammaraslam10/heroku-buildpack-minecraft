@@ -32,20 +32,20 @@ if [ -n "$FTP_HOST" ]; then
     pyftpsync sync plugins/ ftp://${FTP_HOST}/cloud/minecraft/plugins
   else
     mkdir -p world
-    cd world
-    pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/world --force --delete --resolve=remote
-    cd ..
-    mkdir -p plugins
-    cd plugins
-    pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/plugins --force --delete --resolve=remote
-    cd ..
-    mkdir -p world_nether
-    cd world_nether
-    pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/world_nether --force --delete --resolve=remote
-    cd ..
-    mkdir -p world_the_end
-    cd world_the_end
-    pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/world_the_end --force --delete --resolve=remote
-    cd ..
+    # cd world
+    # pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/world --force --delete --resolve=remote
+    # cd ..
+    # mkdir -p plugins
+    # cd plugins
+    # pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/plugins --force --delete --resolve=remote
+    # cd ..
+    # mkdir -p world_nether
+    # cd world_nether
+    # pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/world_nether --force --delete --resolve=remote
+    # cd ..
+    # mkdir -p world_the_end
+    # cd world_the_end
+    # pyftpsync download . ftp://${FTP_HOST}/cloud/minecraft/world_the_end --force --delete --resolve=remote
+    # cd ..
   fi
 fi
